@@ -48,7 +48,13 @@ TO_DATE('1986-09-21', 'yyyy-mm-dd'), '3', 'Engener'),
 ('2', '2', 'Dmitry Ivanov', 'M', 
 TO_DATE('1982-10-30', 'yyyy-mm-dd'), '2', 'Manager'),
 ('3', '1', 'Olesja Pavlova', 'F', 
-TO_DATE('2000-08-10', 'yyyy-mm-dd'), '1', 'Programmer');
+TO_DATE('2000-08-10', 'yyyy-mm-dd'), '1', 'Programmer'),
+('4', '1', 'Ilona Bukina', 'F', 
+TO_DATE('1999-09-20', 'yyyy-mm-dd'), '1', 'Programmer');
+
+INSERT INTO employees
+VALUES('4', '1', 'Ilona Bukina', 'F', 
+TO_DATE('1999-09-20', 'yyyy-mm-dd'), '1', 'Programmer');
 
 INSERT INTO children(child_id, empl_id, 
 child_name, child_birthday)
@@ -80,6 +86,13 @@ LEFT JOIN employees
 ON departments.depart_id = employees.empl_depart_num
 WHERE employees.empl_id IS NULL;
 
+--Посчитать количество сотрудников с разными уровнями образования;
+
+SELECT education.edu_category, COUNT(empl_education)
+FROM employees, education
+WHERE employees.empl_education = education.edu_id
+GROUP BY education.edu_category;
+
 --1. "Отделы и сотрудники" (поля обоих отношений без повторов).
 CREATE VIEW departempl AS
 SELECT DISTINCT *
@@ -96,3 +109,9 @@ ON employees.empl_id = children.empl_id
 WHERE children.empl_id IS NULL;
 
 --3. "Образовательный уровень сотрудников" (уровень образования, количе- ство мужчин, количество женщин).
+CREATE VIEW educationlevel AS
+SELECT edu_category, COUNT(CASE WHEN empl_gender = 'M' THEN 1 END) AS malecount, 
+COUNT(CASE WHEN empl_gender = 'F' THEN 1 END) AS femalecount
+FROM education, employees
+WHERE education.edu_id = employees.empl_education
+GROUP by edu_category;
