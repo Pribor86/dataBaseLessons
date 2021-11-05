@@ -80,6 +80,13 @@ LEFT JOIN employees
 ON departments.depart_id = employees.empl_depart_num
 WHERE employees.empl_id IS NULL;
 
+--Посчитать количество сотрудников с разными уровнями образования.
+
+SELECT education.edu_category, COUNT(employees.empl_id)
+FROM education, employees
+WHERE education.edu_id = employees.empl_education
+GROUP BY education.edu_category;
+
 --1. "Отделы и сотрудники" (поля обоих отношений без повторов).
 CREATE VIEW departempl AS
 SELECT employees.*, depart_name
