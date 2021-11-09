@@ -46,38 +46,38 @@ VALUES
 INSERT INTO product(prod_id, prod_type,
 prod_vers, prod_date)
 VALUES
-('1', 'FiredNow', '1.1', TO_DATE('2020-06-10', 'yyyy-mm-dd'),
-('2', 'FiredAlways', '2.1', TO_DATE('2020-07-11', 'yyyy-mm-dd'),
-('3', 'FiredAtCamp', '3.1', TO_DATE('2020-08-12', 'yyyy-mm-dd'),
-('1', 'FiredNow', '1.1', TO_DATE('2020-06-10', 'yyyy-mm-dd'),
-('2', 'FiredAlways', '2.1', TO_DATE('2020-07-11', 'yyyy-mm-dd'),
-('3', 'FiredAtCamp', '3.1', TO_DATE('2020-08-12', 'yyyy-mm-dd'),
-('1', 'FiredNow', '1.1', TO_DATE('2020-06-10', 'yyyy-mm-dd'),
-('2', 'FiredAlways', '2.1', TO_DATE('2020-07-11', 'yyyy-mm-dd'),
-('3', 'FiredAtCamp', '3.1', TO_DATE('2020-08-12', 'yyyy-mm-dd'),
-('1', 'FiredNow', '1.1', TO_DATE('2020-06-10', 'yyyy-mm-dd'),
-('2', 'FiredAlways', '2.1', TO_DATE('2020-07-11', 'yyyy-mm-dd'),
-('3', 'FiredAtCamp', '3.1', TO_DATE('2020-08-12', 'yyyy-mm-dd'),
-('1', 'FiredNow', '1.1', TO_DATE('2020-06-10', 'yyyy-mm-dd'),
-('2', 'FiredAlways', '2.1', TO_DATE('2020-07-11', 'yyyy-mm-dd'),
-('3', 'FiredAtCamp', '3.1', TO_DATE('2020-08-12', 'yyyy-mm-dd');
+('1', 'FiredNow', '1.1', TO_DATE('2020-06-10', 'yyyy-mm-dd')),
+('2', 'FiredAlways', '2.1', TO_DATE('2020-07-11', 'yyyy-mm-dd')),
+('3', 'FiredAtCamp', '3.1', TO_DATE('2020-08-12', 'yyyy-mm-dd')),
+('4', 'FiredNow', '1.1', TO_DATE('2020-06-10', 'yyyy-mm-dd')),
+('5', 'FiredAlways', '2.1', TO_DATE('2020-07-11', 'yyyy-mm-dd')),
+('6', 'FiredAtCamp', '3.1', TO_DATE('2020-08-12', 'yyyy-mm-dd')),
+('7', 'FiredNow', '1.1', TO_DATE('2020-06-10', 'yyyy-mm-dd')),
+('8', 'FiredAlways', '2.1', TO_DATE('2020-07-11', 'yyyy-mm-dd')),
+('9', 'FiredAtCamp', '3.1', TO_DATE('2020-08-12', 'yyyy-mm-dd')),
+('10', 'FiredNow', '1.1', TO_DATE('2020-06-10', 'yyyy-mm-dd')),
+('11', 'FiredAlways', '2.1', TO_DATE('2020-07-11', 'yyyy-mm-dd')),
+('12', 'FiredAtCamp', '3.1', TO_DATE('2020-08-12', 'yyyy-mm-dd')),
+('13', 'FiredNow', '1.1', TO_DATE('2020-06-10', 'yyyy-mm-dd')),
+('14', 'FiredAlways', '2.1', TO_DATE('2020-07-11', 'yyyy-mm-dd')),
+('15', 'FiredAtCamp', '3.1', TO_DATE('2020-08-12', 'yyyy-mm-dd'));
 
-INSERT INTO registration(cust_id, prod_id,
+INSERT INTO registration(reg_id, cust_id, prod_id,
 reg_date)
 VALUES
-('001', '1', '2', TO_DATE('2021-02-21', 'yyyy-mm-dd'),
-('002', '2', '3', TO_DATE('2021-08-13', 'yyyy-mm-dd'),
-('003', '3', '3', TO_DATE('2021-08-20', 'yyyy-mm-dd'),
-('004', '4', '2', TO_DATE('2021-08-21', 'yyyy-mm-dd'),
-('005', '1', '1', TO_DATE('2021-02-30', 'yyyy-mm-dd'),
-('006', '2', '2', TO_DATE('2020-10-05', 'yyyy-mm-dd'),
-('007', '6', '1', TO_DATE('2021-08-15', 'yyyy-mm-dd'),
-('008', '5', '3', TO_DATE('2020-09-05', 'yyyy-mm-dd');
+('001', '1', '2', TO_DATE('2021-02-21', 'yyyy-mm-dd')),
+('002', '2', '3', TO_DATE('2021-08-13', 'yyyy-mm-dd')),
+('003', '3', '3', TO_DATE('2021-08-20', 'yyyy-mm-dd')),
+('004', '4', '2', TO_DATE('2021-08-21', 'yyyy-mm-dd')),
+('005', '1', '1', TO_DATE('2021-02-28', 'yyyy-mm-dd')),
+('006', '2', '2', TO_DATE('2020-10-05', 'yyyy-mm-dd')),
+('007', '6', '1', TO_DATE('2021-08-15', 'yyyy-mm-dd')),
+('008', '5', '3', TO_DATE('2020-09-05', 'yyyy-mm-dd'));
 
 INSERT INTO repair(bill_id, prod_id, repair_date,
 repair_desc, repair_price, cust_id)
 VALUES
-('01', '3', TO_DATE('2021-09-09', 'yyyy-mm-dd'), 'no fire', '100,50', '1'),
+('01', '3', TO_DATE('2021-09-09', 'yyyy-mm-dd'), 'no fire', '100.50', '1'),
 ('02', '2', TO_DATE('2021-09-09', 'yyyy-mm-dd'), 'doesnt work', '50', '2'),
 ('03', '1', TO_DATE('2021-10-05', 'yyyy-mm-dd'), 'fail', '150', '3'),
 ('04', '2', TO_DATE('2021-10-04', 'yyyy-mm-dd'), '', '300', '4'),
