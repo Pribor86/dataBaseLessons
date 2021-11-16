@@ -70,6 +70,18 @@ VALUES
         'Alex Grigorjev',
         '+3725287654',
         'grig@gmail.com'
+    ),
+    (
+        '7',
+        'Ivan Reshemkin',
+        '+3725214654',
+        NULL
+    ),
+    (
+        '8',
+        'Vedu Kucko',
+        '+3725214612',
+        NULL
     );
 
 INSERT INTO
@@ -323,9 +335,117 @@ WHERE
             reg_date
     ) = 2;
 
-    -- 3. Выведите список имен покупателей, 
-    -- не имеющих электронной почты; 
-    -- отсортируйте результаты в обратном алфавитном порядке.
+-- 3. Выведите список имен покупателей, 
+-- не имеющих электронной почты; 
+-- отсортируйте результаты в обратном алфавитном порядке.
+SELECT
+    *
+FROM
+    customer
+WHERE
+    cust_email IS NULL
+ORDER BY
+    cust_name DESC;
 
-    SELECT cust_name from customer
-    where cust_email IS NULL;
+-- 4. Определите среднюю стоимость ремонта горелки.
+SELECT
+    ROUND(AVG(repair_price), 2) AS avg_price
+FROM
+    REPAIR;
+
+-- 5. Определите количество горелок каждого типа 
+-- и выведите тип и количество.
+SELECT
+    prod_type,
+    COUNT(prod_type) AS quantity
+FROM
+    product
+GROUP BY
+    prod_type;
+
+-- 6. Выведите имена и адреса электронной почты 
+-- всех покупателей, на которых зарегистрирована 
+-- горелка типа «FiredNow». 
+-- Используйте вложенный запрос.
+SELECT
+    cust_name,
+    cust_email
+FROM
+    customer,
+    registration
+WHERE
+    customer.cust_id = registration.cust_id
+    AND registration.prod_id IN(
+        SELECT
+            prod_id
+        FROM
+            product
+        WHERE
+            prod_type = 'FiredNow'
+    );
+
+--7. Выведите имена и адреса электронной почты 
+--всех покупателей, на которых зарегистрирована 
+--горелка типа «FiredNow». 
+--Используйте объединение.
+SELECT
+    cust_name,
+    cust_email
+FROM
+    customer
+    JOIN registration ON customer.cust_id = registration.cust_id
+    JOIN product ON product.prod_id = registration.prod_id
+WHERE
+    product.prod_type = 'FiredNow';
+
+--8. Выведите имена и адреса электронной почты покупателей,
+-- имеющих зарегистрированную горелку, но не сдававших 
+-- ни одной горелки в ремонт.
+SELECT
+    cust_name,
+    cust_email
+FROM
+    customer
+    JOIN registration ON customer.cust_id = registration.cust_id
+    LEFT JOIN REPAIR ON REPAIR.cust_id = registration.cust_id
+WHERE
+    bill_id IS NULL;
+
+-- 9. Постройте представление, начинающееся с таблицы ГОРЕЛКА
+-- и содержащее все данные из всех таблиц. Назовите это представление 
+-- ГОРЕЛКА_ПР.
+CREATE VIEW burners AS;
+
+SELECT
+    DISTINCT product.*,
+    customer.*,
+    registration.reg_id,
+    registration.reg_date,
+    REPAIR.bill_id,
+    REPAIR.repair_date,
+    REPAIR.repair_desc,
+    REPAIR.repair_price
+FROM
+    product
+   LEFT JOIN registration ON product.prod_id = registration.prod_id
+   LEFT JOIN repair ON repair.prod_id = registration.prod_id
+    JOIN customer ON customer.cust_id = registration.cust_id
+ORDER BY
+    product.prod_id;
+
+-- 10. Напишите SQL-операторы, необходимые для чтения представления 
+--ГОРЕЛКА_ПР. Начните с некоторого серийного номера.
+SELECT
+    prod_id,
+    cust_name
+FROM
+    burners;
+
+SELECT
+    DISTINCT prod_id,
+    bill_id,
+    cust_name
+FROM
+    burners
+WHERE
+    bill_id IS NOT NULL;
