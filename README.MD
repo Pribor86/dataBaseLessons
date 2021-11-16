@@ -10,3 +10,11 @@
 - [Practice work N2](https://github.com/Pribor86/dataBaseLessons/tree/main/practiceWork2)
 - [**Exam preparation**](https://github.com/Pribor86/dataBaseLessons/tree/main/exam)
 
+## Using tools:
+
+<img src="assets/vscode2.png"
+     alt="Visual Studia Code"
+     style="float: left; margin-right: 10px; width: 45px;"/>
+<img src="assets/postgresql.png"
+     alt="PostgreSql"
+     style="float: left; margin-left: 10px; width: 45px;"/>
